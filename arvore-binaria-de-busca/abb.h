@@ -16,5 +16,10 @@ Arvore* inserir(Arvore *a, int v);
 Arvore* remover (Arvore *a, int v);
 int buscar (Arvore *a, int v);
 void preOrder(Arvore* a); 
+Arvore *min(Arvore *a);
+Arvore *max(Arvore *a);
+void imprimeDecrescente(Arvore *a);
+int maiorRamo(Arvore *a);
+int calculaRamo(Arvore *a, int somaAtual);
 
 #endif
