@@ -121,3 +121,61 @@ int calculaRamo(Arvore *a, int somaAtual)
     
     return (somaDir > somaEsq)? somaDir : somaEsq;
 }
+
+//========= DESAFIO - Imprimir estruturada =====
+
+int maiorNivel(Arvore *a)
+{
+    if(a == NULL)
+        return 0;
+
+    return calculaNivel(a, 0);
+}
+
+int calculaNivel(Arvore *a, int tamanhoAtual)
+{
+    int esq;
+    int dir;
+
+    if(a == NULL)
+        return 0;
+
+    tamanhoAtual++;
+    if(a->esq == NULL && a->dir == NULL)
+        return tamanhoAtual;
+
+    esq = calculaNivel(a->esq, tamanhoAtual);
+    dir = calculaNivel(a->dir, tamanhoAtual);
+    
+    return (dir > esq)? dir : esq;
+}
+
+
+void imprimirArvore(Arvore *a, int nivelAtual, int nivel, int maxNivel, int esquerda)
+{
+    if (a != NULL)
+    {
+        imprimirArvore(a->esq, nivelAtual + 1, nivel, maxNivel, 1);
+        if(nivelAtual == nivel)
+        {
+            if(esquerda)
+                for(int i = 0; i < maxNivel - nivelAtual; i++)
+                    printf("\t");
+            else
+                printf("\t\t");
+            printf("%d", a->info, nivelAtual);
+        }
+        imprimirArvore(a->dir, nivelAtual + 1, nivel, maxNivel, 0);
+    }
+
+}
+void imprimir_arvore_vertical(Arvore *raiz, int nivel) {
+    if (raiz != NULL) {
+        imprimir_arvore_vertical(raiz->dir, nivel + 1); // imprime subárvore direita com um nível a mais
+        for (int i = 0; i < nivel; i++) {
+            printf("\t"); // imprime espaços para representar a hierarquia
+        }
+        printf("%d\n", raiz->info); // imprime o valor do nó
+        imprimir_arvore_vertical(raiz->esq, nivel + 1); // imprime subárvore esquerda com um nível a mais
+    }
+}

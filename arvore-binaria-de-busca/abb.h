@@ -21,5 +21,9 @@ Arvore *max(Arvore *a);
 void imprimeDecrescente(Arvore *a);
 int maiorRamo(Arvore *a);
 int calculaRamo(Arvore *a, int somaAtual);
+void imprimir_arvore_vertical(Arvore *raiz, int nivel);
+int maiorNivel(Arvore *a);
+int calculaNivel(Arvore *a, int tamanhoAtual);
+void imprimirArvore(Arvore *a, int nivelAtual, int nivel, int maxNivel, int esquerda);
 
 #endif
