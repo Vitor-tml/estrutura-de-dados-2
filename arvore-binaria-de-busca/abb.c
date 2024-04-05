@@ -153,6 +153,12 @@ int calculaNivel(Arvore *a, int tamanhoAtual)
 
 void imprimirArvore(Arvore *a, int nivelAtual, int nivel, int maxNivel, int esquerda)
 {
+    // PROBLEMAS:
+    /*
+        1. Arrumar a impressão de nós vazios (quando nivelAtual == nivel e a == NULL deve imprimir um espaço)
+        2. Arrumar o espaçamento para quando existirem vários níveis
+        3. Quando for imprimir a esquerda novamente de um mesmo nível continua usando vários tabs 
+    */
     if (a != NULL)
     {
         imprimirArvore(a->esq, nivelAtual + 1, nivel, maxNivel, 1);
@@ -163,7 +169,7 @@ void imprimirArvore(Arvore *a, int nivelAtual, int nivel, int maxNivel, int esqu
                     printf("\t");
             else
                 printf("\t\t");
-            printf("%d", a->info, nivelAtual);
+            printf("%d", a->info);
         }
         imprimirArvore(a->dir, nivelAtual + 1, nivel, maxNivel, 0);
     }

@@ -30,7 +30,7 @@ int main()
 
 	jaqueiro = inserir(jaqueiro, 10);
     jaqueiro = inserir(jaqueiro, 5);
-    // jaqueiro = inserir(jaqueiro, 15);
+    jaqueiro = inserir(jaqueiro, 15);
     jaqueiro = inserir(jaqueiro, 3);
     jaqueiro = inserir(jaqueiro, 7);
     jaqueiro = inserir(jaqueiro, 12);
