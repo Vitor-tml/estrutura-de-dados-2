@@ -11,19 +11,19 @@ typedef struct arvore {
 } Arvore;
 
 Arvore* criaArvoreVazia();
-void liberaArvore (Arvore* a);
 Arvore* inserir(Arvore *a, int v);
-Arvore* remover (Arvore *a, int v);
-int buscar (Arvore *a, int v);
-void preOrder(Arvore* a); 
+Arvore* remover(Arvore *a, int v);
 Arvore *min(Arvore *a);
 Arvore *max(Arvore *a);
+void liberaArvore (Arvore* a);
+void preOrder(Arvore* a); 
 void imprimeDecrescente(Arvore *a);
+void imprimir_arvore_vertical(Arvore *raiz, int nivel);
+void imprimirArvore(Arvore *a, int nivelAtual, int nivel, int maxNivel, int esquerda);
+int buscar (Arvore *a, int v);
 int maiorRamo(Arvore *a);
 int calculaRamo(Arvore *a, int somaAtual);
-void imprimir_arvore_vertical(Arvore *raiz, int nivel);
 int maiorNivel(Arvore *a);
 int calculaNivel(Arvore *a, int tamanhoAtual);
-void imprimirArvore(Arvore *a, int nivelAtual, int nivel, int maxNivel, int esquerda);
 
 #endif

@@ -35,12 +35,47 @@ Arvore *inserir(Arvore *a, int v)
 }
 
 //========= Q1 - remover
-Arvore *remover(Arvore *a, int v)
-{
-    /* Completar */
-
+Arvore* remover (Arvore *a, int v)
+{ 
+    if(a == NULL){
+        return NULL;
+    }
+    if(a->info > v){
+        a->esq = remover(a->esq, v);
+    }
+    else if(a->info < v){
+        a->dir = remover(a->dir, v);
+    }
+    else { // Encontrou o nó a ser removido
+        Arvore *aux;
+        if(a->dir == NULL && a->esq == NULL){ // Caso não tenha filhos
+            printf("Nenhum filho\n");
+            free(a);
+            a = NULL;
+        } 
+        else if(a->dir == NULL){ // Caso tenha um filho na esquerda
+            printf("Filho na esquerda\n");
+            aux = a;
+            a = a->esq;
+            free(aux);
+        } 
+        else if(a->esq == NULL){ // Caso tenha um filho na direita
+            printf("Filho na direita\n");
+            aux = a;
+            a = a->dir;
+            free(aux);
+        }
+        else { // Caso tenha dois filhos 
+            printf("Dois filhos\n");
+            aux = min(a->dir);                   // Encontrar o menor nó na subárvore direita
+            a->info = aux->info;                 // Substituir o valor do nó atual pelo menor valor
+            aux->info = v;                       // Coloca o valor a ser retirado na subárvore a direita
+            a->dir = remover(a->dir, aux->info); // Remover o nó a ser retirado da subárvore direita (funciona também se não comutar a info)
+        }
+    }
     return a;
 }
+
 
 //========= Q1 - busca
 int buscar(Arvore *a, int v)
