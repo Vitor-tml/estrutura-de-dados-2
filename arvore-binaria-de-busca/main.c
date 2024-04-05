@@ -45,7 +45,7 @@ int main()
 		imprimirArvore(jaqueiro, 0, i, 7, 1);
 		printf("\n");
 	}
-
+	// AAAAAAAAA nao funciona
 	return 0;
 }
 
