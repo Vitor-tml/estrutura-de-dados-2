@@ -24,6 +24,7 @@ void freeNode(Trie *node)
       freeNode(node->keys[i]);
 
   free(node);
+  node = NULL;
 }
 
 // Retorna: 1 - Palavra encontrada 0 - Palavra não encontrada
@@ -43,12 +44,11 @@ int search(Trie *root, char *word)
 
     i++;
   }
-
   return (t->end)? TRUE: FALSE;
 }
 
 // Insere palavra na trie
-Trie *insert(Trie *root, char *word)
+Trie *insertWord(Trie *root, char *word)
 {
   if(search(root, word))
   {
@@ -65,8 +65,8 @@ Trie *insert(Trie *root, char *word)
     // Testar se deve adicionar no nChild só quando criar nó ou sempre
     if(t->keys[index] == NULL)
       t->keys[index] = createNode(word[i]);
-    t->nChild++;
     t = t->keys[index];
+    t->nChild++;
     i++;
   }
   t->end = TRUE;
@@ -74,20 +74,62 @@ Trie *insert(Trie *root, char *word)
 }
 
 // Remove palavra
-Trie *remove(Trie *root, char *word)
+Trie *removeWord(Trie *root, char *word)
 {
-  if(search(root, word))
+  if(!search(root, word))
   {
-    printf("Impossivel remover. Palavra %s nao existe na Trie\n");
+    printf("Impossivel remover. Palavra %s nao existe na Trie\n", word);
     return root;
   }
 
   int i = 0;
-  int index;
-
+  int index = 0;
+  Trie *t = root;
+  
+  // Caso onde a palavra  é prefixo de alguma outra
   while(word[i] != '\0')
   {
+    //printf("Debug %c\n", word[i]);
     index = word[i] - 'a'; 
+    t->keys[index]->nChild--;
+    if(t->keys[index]->nChild == 0)
+    {
+      freeNode(t->keys[index]);
+      t->keys[index] = NULL;
+      return root;
+    }
+    t = t->keys[index];
     i++;
   }
+  // removeWord a marcação de final de palavra
+  t->end = FALSE;
+
+  return root;
+}
+
+// imprime as palavras dentro de uma trie (root = raiz da trie, buffer = palavra sendo formada, depth = profundidade atual na trie)
+void printWord(Trie *root, char *buffer, int depth)
+{
+  int i;
+  if(root->end)
+  {
+    buffer[depth] = '\0';
+    printf("%s\n", buffer);
+  }
+
+  for(i = 0; i < SIZE; i++)
+  {
+    if(root->keys[i] != NULL)
+    {
+      buffer[depth] = root->keys[i]->data;
+      printWord(root->keys[i], buffer, depth + 1);
+    }
+  }
+}
+
+void printTrie(Trie *root)
+{
+  // Tamanho máximo das palavras a serem impressas
+  char buffer[100];
+  printWord(root, buffer, 0);
 }

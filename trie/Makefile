@@ -19,7 +19,7 @@ CFLAGS = -Wall -Werror -O2
 
 all: $(PROGRAMA)
 
-$(PROGRAMA): $(OBJETOS)
+$(PROGRAMA): $(OBJETOS) $(FONTE)
 	$(COMPILADOR) $(FONTE) -o $(PROGRAMA) $(OBJETOS) $(CFLAGS)
 
 # Regras para compilar arquivos fonte em arquivos objeto

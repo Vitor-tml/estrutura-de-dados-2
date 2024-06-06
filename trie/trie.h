@@ -21,8 +21,10 @@ typedef struct trie{
 // "Métodos" da estrutura
 
 Trie *createNode(char data);
-Trie *insert(Trie *root, char *word);
-Trie *remove(Trie *root, char *word);
+Trie *insertWord(Trie *root, char *word);
+Trie *removeWord(Trie *root, char *word);
 int search(Trie *root, char *word);
 void freeNode(Trie *node);
+void printTrie(Trie *root);
+void printWord(Trie *root, char *buffer, int depth);
 #endif
