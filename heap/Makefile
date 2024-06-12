@@ -1,5 +1,5 @@
 # Nome do programa
-PROGRAMA = main # colocar nome de saída do programa aqui
+PROGRAMA = saida # colocar nome de saída do programa aqui
 FONTE = main.c  # colocar nome do arquivo contendo a main aqui
 
 # Arquivos C
@@ -19,7 +19,7 @@ CFLAGS = -Wall -Werror -O2
 
 all: $(PROGRAMA)
 
-$(PROGRAMA): $(OBJETOS)
+$(PROGRAMA): $(OBJETOS) $(FONTE)
 	$(COMPILADOR) $(FONTE) -o $(PROGRAMA) $(OBJETOS) $(CFLAGS)
 
 # Regras para compilar arquivos fonte em arquivos objeto
