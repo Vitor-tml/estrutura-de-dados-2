@@ -8,5 +8,6 @@ typedef struct hash {
 Hash* createHash(int M);
 void freeHash(Hash *H);
 void hashPrint(Hash *H, int M);
-int insertHash(Hash *H, int M, int key);
+int insertHash(Hash *H, int M, int key, int *colisoes);
+int searchHash(Hash *H, int M, int key);
 #endif

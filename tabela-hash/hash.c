@@ -26,7 +26,7 @@ void hashPrint(Hash *H, int M)
         if(H[i].key != EMPTY)
             printf("%2d - %d\n", i, H[i].key);
         else
-            printf("%2d - %d\n", i);
+            printf("%2d -   \n", i);
     }
 }
 
@@ -50,10 +50,9 @@ int hashingDuplo(int chave, int iterador, int M)
 
 int insertHash(Hash *H, int M, int key, int *colisoes)
 {
-    int i, j;
-
+    int i = 0, j;
     do{
-        j = print(""); //inserir sondagem
+        j = hashingDuplo(key, i, M); //inserir sondagem
 
         if(H[j].key == EMPTY)
         {
@@ -61,7 +60,23 @@ int insertHash(Hash *H, int M, int key, int *colisoes)
             return j;
         }
         else
-            *colisoes++;
+            *colisoes = *colisoes + 1;
         i++;
     } while (i != M );
+
+    return -1;
+}
+
+int searchHash(Hash *H, int M, int key)
+{
+    int i = 0, j;
+
+    do{
+        j = sondagemLinear(key, i, M);
+        printf("Testando chave: %d\n", j);
+        if(H[j].key == key)
+            return j;
+        i++;
+    }while( (i != M) || (H[j].key != EMPTY));
+    return -1;    
 }
