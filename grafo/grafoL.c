@@ -76,7 +76,7 @@ void imprimeListaAdj(GrafoL *G)
     No *aux;
     for(i = 0; i < G->v; i++)
     {
-        printf("%d -> ", i);
+        printf("%d \u2192 ", i);
         aux = G->adj[i];
         while(aux != NULL)
         {

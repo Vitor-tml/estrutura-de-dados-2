@@ -16,4 +16,5 @@ GrafoL* criaGrafoLista(int tamanho);
 void freeGrafoL(GrafoL *G);
 void criaAdjacenciaL(GrafoL *M, int a, int b);
 void imprimeListaAdj(GrafoL *G);
+
 #endif
