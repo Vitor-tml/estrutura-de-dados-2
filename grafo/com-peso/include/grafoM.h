@@ -13,6 +13,7 @@ GrafoM* criaGrafoMatriz(int tamanho);
 void freeGrafoM(GrafoM *G);
 void criaAdjacenciaM(GrafoM *M, int a, int b, int peso);
 void imprimeMatrizAdj(GrafoM *G);
-int arestasIncidentes(GrafoM *G, int v);
-
+int arestasIncidentesM(GrafoM *G, int v);
+int arestasEmanantesM(GrafoM *G, int v);
+void verticesAdjacentesM(GrafoM *G, int v);
 #endif

@@ -56,7 +56,7 @@ void imprimeMatrizAdj(GrafoM *G)
     }
 }
 
-int arestasIncidentes(GrafoM *G, int v)
+int arestasIncidentesM(GrafoM *G, int v)
 {
     int i;
     int arestas = 0;
@@ -65,4 +65,26 @@ int arestasIncidentes(GrafoM *G, int v)
         if(G->mat[i][v] != 0)
             arestas++;
     return arestas;
+}
+
+int arestasEmanantesM(GrafoM *G, int v)
+{
+    int i;
+    int arestas = 0;
+
+    for(i = 0; i < G->v; i++)
+        if(G->mat[v][i] != 0)
+            arestas++;
+    return arestas;
+}
+
+void verticesAdjacentesM(GrafoM *G, int v)
+{
+    int i;
+    printf("Vertices adjacentes ao vertice %d: ", v);
+    for(i = 0; i < G->v; i++)
+        if(G->mat[v][i] != 0 || G->mat[i][v])
+            printf("%d ", i);
+    printf("\n");
+    return;    
 }

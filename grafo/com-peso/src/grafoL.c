@@ -74,3 +74,58 @@ void imprimeListaAdj(GrafoL *G)
         printf("\n");
     }
 }
+
+void verticesAdjacentesL(GrafoL *G, int v)
+{
+    int i;
+    No *aux;
+    printf("Vertices adjacentes a %d: ", v);
+    // Imprime as arestas que apontam pra V
+    for(i = 0; i < G->v; i++)    
+    {
+        aux = G->adj[i];
+        while(aux != NULL)
+        {
+            // Se for a lista de adjacencia do próprio vertice ou se o vértice está na lista de de adjacencia de outro
+            if(aux->id == v || i == v)
+            {
+                // Caso esteja na lista de adjacencia do próprio vértice imprime o ID do nó, senão imprime o ID da lista de adj
+                printf("%d ", (i == v)? aux->id: i);
+                break;
+            }
+        }  
+    }      
+    // Imprime as arestas que saem de V
+    printf("\n");
+}
+int arestasIncidentesL(GrafoL *G, int v)
+{
+    int i, arestas = 0;
+    No *aux;
+    for(i = 0; i < G->v; i++)
+    {
+        aux = G->adj[i];
+        while(aux != NULL)
+        {
+            if(aux->id == v)
+            {
+                arestas++;
+                break;
+            }
+            aux = aux->next;
+        }        
+    }
+    return arestas;
+}
+int arestasEmanantesL(GrafoL *G, int v)
+{
+    No *aux = G->adj[v];
+    int arestas = 0;
+    printf("Arestas Emanantes de %d: ", v);
+    while(aux != NULL)
+    {
+        arestas++;
+        aux = aux->next;
+    }
+    return arestas;
+}
