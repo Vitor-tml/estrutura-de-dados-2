@@ -3,7 +3,7 @@ PROGRAMA = ./bin/saida
 FONTE = main.c
 
 # Arquivos C
-ARQUIVOS_C = ./src/grafo.h ./src/fila.h
+ARQUIVOS_C = ./src/grafo.c ./src/fila.c
 
 # Arquivos de Cabeçalhos
 CABECALHOS = ./include/grafo.h ./include/fila.h

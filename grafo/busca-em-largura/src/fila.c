@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "fila.h"
 
 int empty(Fila *f)
@@ -8,7 +9,7 @@ int empty(Fila *f)
 int full(Fila *f)
 {
     // Como é uma fila circular, quando cheio o índice do fim volta ao início
-    retur (f->inicio == ((f->fim + 1) % f->tam));
+    return (f->inicio == ((f->fim + 1) % f->tam));
 }
 
 Fila* createQueue(int tam)
